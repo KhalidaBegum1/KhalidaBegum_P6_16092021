@@ -8,5 +8,7 @@ export const convertStringToHTML = (innerHTML) => {
 };
 
 export const loadData = async () => {
-  return await fetch("./FishEyeData.json").then((response) => response.json());
+  return await fetch("./data/FishEyeData.json").then((response) =>
+    response.json()
+  );
 };

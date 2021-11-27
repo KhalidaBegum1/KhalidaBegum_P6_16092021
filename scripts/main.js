@@ -21,7 +21,7 @@ import { convertStringToHTML, loadData } from "./common.js";
 //create profile into new div and contain each profile in fragments (container)
 const createProfile = (photographer) => {
   return convertStringToHTML(`
-    <article>
+     <article>
       <div class="vignette">
       <div class="vignette-link">
         <a href="photograph.html?photographerId=${photographer.id}">
@@ -72,3 +72,14 @@ loadData()
   .then((photographers) => {
     photographers.forEach(displayProfile);
   });
+/* TODO :  Ajouter dynamiquement les tags
+  Pour cela : 
+  0) Créer une nouvelle fonction createTags
+  1) Faire un boucle sur tous les photographes
+  2) Récupérer dedans tous les tags existants
+  3) Les stocker dans un tableau
+  4) Filtrer le tableau pour éviter d'avoir des tags en double
+  5) Faire un boucle sur ce tableau là puis return le HTML nécessaire grâce à convertStringToHTML()
+  6) Créer une seconde fonction displayTags
+  7) Puis faire l'appel de la fonction createTags dedans pour y insérer les données dans .nav-menu
+*/

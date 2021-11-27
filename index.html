@@ -15,9 +15,8 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="mimi-keel.html" />
-    <link rel="stylesheet" href="photograph.html" />
+    <link rel="stylesheet" href="./css/main.css" />
+
     <title>FishEye</title>
   </head>
   <body>
@@ -25,38 +24,39 @@
     <header class="main-header">
       <div class="header">
         <a href="index.html">
-          <img src="UI-Design-FishEye-FR/logo.jpg" alt="FishEye Homepage"
+          <img src="assets/logo.jpg" alt="FishEye Homepage"
         /></a>
         <h1 class="mobile-title">Nos Photographes</h1>
       </div>
-     <nav>
-      <ul class="nav-menu">
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <!-- TODO : Les tags doivent s'ajouter dynamiquement ici-->
           <span>
-            <li><a href="index.html?tag=${tag}">#Portrait</a></li></span
+            <li><a href="#">#Portrait</a></li></span
           >
           <span
-            ><li><a href="index.html?tag=${tag}">#Art</a></li></span
+            ><li><a href="#">#Art</a></li></span
           >
           <span>
-            <li><a href="index.html?tag=${tag}">#Fashion</a></li></span
+            <li><a href="#">#Fashion</a></li></span
           >
           <span>
-            <li><a href="index.html?tag=${tag}">#Architechture</a></li></span
+            <li><a href="#">#Architechture</a></li></span
           >
           <span>
-            <li><a href="index.html?tag=${tag}">#Travel</a></li></span
+            <li><a href="#">#Travel</a></li></span
           >
           <span
-            ><li><a href="index.html?tag=${tag}">#Sport</a></li></span
+            ><li><a href="#">#Sport</a></li></span
           >
           <span
-            ><li><a href="index.html?tag=${tag}">#Animals</a></li></span
+            ><li><a href="#">#Animals</a></li></span
           >
           <span
-            ><li><a href="index.html?tag=${tag}">#Events</a></li></span
+            ><li><a href="#">#Events</a></li></span
           >
         </ul>
-      </nav> 
+      </nav>
       <h1 class="desktop-title">Nos Photographes</h1>
     </header>
     <main>
@@ -65,6 +65,6 @@
       </section>
     </main>
 
-    <script src="main.js" type="module"></script>
+    <script src="./scripts/main.js" type="module"></script>
   </body>
 </html>

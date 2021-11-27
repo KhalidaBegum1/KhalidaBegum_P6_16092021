@@ -35,8 +35,9 @@ const urlDate = new URLSearchParams(location.search).get("date");
 const like = data.media.likes((media) => {
   return data.media.likes === urlLikes;
 });*/
+document.querySelector("#photographer_likes").appendChild(getLikes(media));
 
-/*const getLikes = (media) => {
+const getLikes = (media) => {
   return convertStringToHTML(
     media.likes
       .map((media) => {
@@ -46,8 +47,18 @@ const like = data.media.likes((media) => {
       })
       .join("")
   );
-};*/
+};
 //byPopularity.addEventListener("click", );
+const getLikes = (media, index) => {
+  return `
+    <article class="portfolio-pics">
+        <div class="portfolio-text" data-id="${index}"> 
+       <a href="photograph.html?likes=${media.likes}"> <span class="portfolio-likes">${media.likes} ❤</span> </a>  
+        </div> 
+      </div>
+    </article>
+  `;
+};
 
 byPopularity.addEventListener("click", () => {
   return media.likes;
@@ -102,3 +113,6 @@ function GetSortOrder(prop) {
     return 0;
   };
 }
+// increment likes
+
+const addLike = document.querySelectorAll(".portfolio-likes");
