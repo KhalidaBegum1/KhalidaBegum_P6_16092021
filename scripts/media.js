@@ -32,7 +32,7 @@ const getImage = (media, index) => {
           /></a>
           <div class="portfolio-text" data-id="${index}">
          <a href="photograph.html?title="${media.title}"> <span class="titles">${media.title}</span></a>
-         <a href="photograph.html?likes="${media.likes}"> <span class="portfolio-likes">${media.likes} ❤</span> </a>  
+         <a href="photograph.html?likes="${media.likes}"> <span class="portfolio-likes">${media.likes}</span> <span> ❤</span> </a>  
           </div> 
         </div>
       </article>

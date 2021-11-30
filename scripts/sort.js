@@ -70,7 +70,7 @@ const titleSort = function sortByTitle(a, b) {
   if (a > b) return 1;
   if (b > a) return -1;
 
-  return title.sort(title);
+  return titles.sort(titles);
 };
 byTitle.addEventListener("click", titleSort);
 
@@ -115,4 +115,8 @@ function GetSortOrder(prop) {
 }
 // increment likes
 
-const addLike = document.querySelectorAll(".portfolio-likes");
+let addLike = document.querySelectorAll(".portfolio-likes");
+
+addLike.addEventListener("click", () => {
+  console.log(addLike)
+});
