@@ -36,49 +36,48 @@ const data = await loadData().then((data) => {
     medias: media,
   };
 });
-console.log(data.medias);
+//console.log(data.medias);
 
 // 1 : Récupérer la tri voulu
-
-const urlLikes = +new URLSearchParams(location.search).get("likes");
-let likes = data.medias;
-
-/*
-let likes = data.medias.sort((media) => {
-  return media.likes === urlLikes;
-});
-
-const urlTitles = new URLSearchParams(location.search).get("title");
-let title = data.medias.sort((media) => {
-  return media.title === urlTitles;
-});
-const urlDate = new URLSearchParams(location.search).get("date");
-let date = data.medias.sort((media) => {
-  return media.date === urlDate;
-});*/
 
 // 2: ajout un event listener sur les boutons
 const byPopularity = document.querySelector(".sort-popularity");
 const byTitle = document.querySelector(".sort-title");
 const byDate = document.querySelector(".sort-date");
 
-byPopularity.addEventListener("click", (media) => {
-  likes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
-  return media.likes === urlLikes;
-  console.log("test");
+byPopularity.addEventListener("click", () => {
+  document.querySelector("#portfolio").innerHTML = "";
+  data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+  document.querySelector("#portfolio").appendChild(getMedias(data.medias));
 });
 
-console.log(likes);
-// 3 : récupérer le texte du bouton
+byTitle.addEventListener("click", () => {
+  document.querySelector("#portfolio").innerHTML = "";
+  data.medias.sort((a, b) => (a.title > b.title ? 1 : -1));
+  document.querySelector("#portfolio").appendChild(getMedias(data.medias));
+});
+byDate.addEventListener("click", () => {
+  document.querySelector("#portfolio").innerHTML = "";
+  data.medias.sort((a, b) => (a.date > b.date ? 1 : -1));
+  document.querySelector("#portfolio").appendChild(getMedias(data.medias));
+});
 
-// 4 : faire une condition selon le tri
+function sort() {
+  byPopularity.addEventListener("click", () => {
+    document.querySelector("#portfolio").innerHTML = "";
+    data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+    document.querySelector("#portfolio").appendChild(getMedias(data.medias));
+  });
+}
 
 // 5: faire le sort du tableau data.medias
-likes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+//likes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+
 //title.sort((a, b) => (a.title > b.title ? 1 : -1));
 //date.sort((a, b) => (a.date > b.date ? 1 : -1));
 //console.log(likes);
 // 6a : Vider le contenu du #portfolio
+
 // 6b : Relancer cette ligne :  document.querySelector("#portfolio").appendChild(getMedias(data.medias));
 
 const getPhotographerBio = (photographer) => {
@@ -190,7 +189,7 @@ dropBtn.forEach((btn) => btn.addEventListener("click", sortMenu));
 //const urlLikes = +new URLSearchParams(location.search).get("likes");
 //const urlTitles = new URLSearchParams(location.search).get("title");
 //const byPopularity = document.querySelector(".sort-popularity");
-//const numberOfLikes = [urlLikes];
+
 //const titles = "urlTitles";
 //numberOfLikes.sort();
 //console.log(numberOfLikes);

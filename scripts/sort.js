@@ -118,5 +118,6 @@ function GetSortOrder(prop) {
 let addLike = document.querySelectorAll(".portfolio-likes");
 
 addLike.addEventListener("click", () => {
+  ++
   console.log(addLike)
 });
