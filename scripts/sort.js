@@ -115,9 +115,80 @@ function GetSortOrder(prop) {
 }
 // increment likes
 
-let addLike = document.querySelectorAll(".portfolio-likes");
+let addLike = document.querySelectorAll(".btn-like");
 
 addLike.addEventListener("click", () => {
   ++
   console.log(addLike)
 });
+function sort() {
+  byPopularity.addEventListener("click", () => {
+    document.querySelector("#portfolio").innerHTML = ""; // Vider le contenu du #portfolio
+    data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1)); //  Récupérer la tri et le sort du tableau data.medias
+    document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
+  });
+}
+
+const numberOfLikes = document.querySelectorAll(".portfolio-likes");
+const plusCounter = document.querySelector(".btn-like");
+let counterValue = data.medias.likes;
+
+plusCounter.addEventListener("click", () => {
+  console.log(counterValue);
+});
+
+printTotalLikes();
+// document.getElementById('nb-likes').textContent = totalLikes;
+var like = document.querySelectorAll(".portfolio-likes");
+for (let x of like) {
+    x.addEventListener("click", increment);
+    x.addEventListener("keydown", increment);
+}
+
+
+function printTotalLikes() {
+  document.querySelectorAll(".portfolio-likes").textContent = totalLikes;
+}
+
+const byPopularity = document.querySelector(".sort-popularity");
+const byTitle = document.querySelector(".sort-title");
+const byDate = document.querySelector(".sort-date");
+
+byPopularity.addEventListener("click", () => {
+  document.querySelector("#portfolio").innerHTML = "";
+  data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+  document.querySelector("#portfolio").appendChild(getMedias(data.medias));
+});
+
+byTitle.addEventListener("click", () => {
+  document.querySelector("#portfolio").innerHTML = "";
+  data.medias.sort((a, b) => (a.title > b.title ? 1 : -1));
+  document.querySelector("#portfolio").appendChild(getMedias(data.medias));
+});
+byDate.addEventListener("click", () => {
+  document.querySelector("#portfolio").innerHTML = "";
+  data.medias.sort((a, b) => (a.date > b.date ? 1 : -1));
+  document.querySelector("#portfolio").appendChild(getMedias(data.medias));
+});
+
+function sort(filter) {
+  byPopularity.addEventListener("click", () => {
+    document.querySelector("#portfolio").innerHTML = ""; // Vider le contenu du #portfolio
+    data.medias.sort((a, b) => (a.filter > b.filter ? -1 : 1)); //  Récupérer la tri et le sort du tableau data.medias
+    document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
+  });
+}
+
+
+
+data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+data.medias.sort((a, b) => (a.title > b.title ? 1 : -1));
+data.medias.sort((a, b) => (a.date > b.date ? 1 : -1));
+function addEvent() {
+  byPopularity.addEventListener("click", sort);
+  byPopularity.addEventListener("keydown", sort);
+  byTitle.addEventListener("click", sort);
+  byTitle.addEventListener("keydown", sort);
+  byDate.addEventListener("click", sort);
+  byDate.addEventListener("keydown", sort);
+}

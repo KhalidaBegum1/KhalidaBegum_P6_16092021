@@ -38,13 +38,12 @@ const data = await loadData().then((data) => {
 });
 //console.log(data.medias);
 
-// 1 : Récupérer la tri voulu
-
 // 2: ajout un event listener sur les boutons
+
 const byPopularity = document.querySelector(".sort-popularity");
 const byTitle = document.querySelector(".sort-title");
 const byDate = document.querySelector(".sort-date");
-
+/*
 byPopularity.addEventListener("click", () => {
   document.querySelector("#portfolio").innerHTML = "";
   data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
@@ -62,23 +61,33 @@ byDate.addEventListener("click", () => {
   document.querySelector("#portfolio").appendChild(getMedias(data.medias));
 });
 
-function sort() {
-  byPopularity.addEventListener("click", () => {
-    document.querySelector("#portfolio").innerHTML = "";
-    data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
-    document.querySelector("#portfolio").appendChild(getMedias(data.medias));
-  });
+function addEvent() {
+  byPopularity.addEventListener("click", sort);
+  byPopularity.addEventListener("keydown", sort);
+  byTitle.addEventListener("click", sort);
+  byTitle.addEventListener("keydown", sort);
+  byDate.addEventListener("click", sort);
+  byDate.addEventListener("keydown", sort);
+}*/
+
+function sort(filter) {
+  document.querySelector("#portfolio").innerHTML = ""; // Vider le contenu du #portfolio
+
+  data.medias.sort(() => "a." + filter > "b." + filter); //  Récupérer la tri et le sort du tableau data.medias
+
+  document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
+  console.log(filter);
 }
 
-// 5: faire le sort du tableau data.medias
-//likes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
-
-//title.sort((a, b) => (a.title > b.title ? 1 : -1));
-//date.sort((a, b) => (a.date > b.date ? 1 : -1));
-//console.log(likes);
-// 6a : Vider le contenu du #portfolio
-
-// 6b : Relancer cette ligne :  document.querySelector("#portfolio").appendChild(getMedias(data.medias));
+byPopularity.addEventListener("click", () => {
+  sort((a, b) => (a.likes > b.likes ? -1 : 1));
+});
+byTitle.addEventListener("click", () => {
+  sort((a, b) => (a.title > b.title ? 1 : -1));
+});
+byDate.addEventListener("click", () => {
+  sort((a, b) => (a.date > b.date ? 1 : -1));
+});
 
 const getPhotographerBio = (photographer) => {
   return convertStringToHTML(`
@@ -165,7 +174,6 @@ function launchLightbox(e) {
   console.log(e.target);
   lightboxBackground.style.display = "block";
 }
-//e.target.getAttribute("data-id");
 
 function launchModal() {
   modalBackground.style.display = "block";
@@ -184,20 +192,47 @@ function closeMenu() {
 }
 dropBtn.forEach((btn) => btn.addEventListener("click", sortMenu));
 
-//sort
+//const numberOfLikes = document.querySelectorAll(".portfolio-likes");
+const plusCounter = document.querySelector(".btn-like");
+let counterValue = 0;
 
-//const urlLikes = +new URLSearchParams(location.search).get("likes");
-//const urlTitles = new URLSearchParams(location.search).get("title");
+plusCounter.addEventListener("click", function () {
+  let counterAdd = (counterValue += 1);
+  // numberOfLikes.innerHTML = counterValue;
+  console.log(counterAdd);
+});
+
+//numberOfLikes.innerHTML = counterValue;
+/*function sort(filter) {
+  console.log("a." + filter);
+  console.log("b." + filter);
+}*/
+//sort("likes");
 //const byPopularity = document.querySelector(".sort-popularity");
+/*function sort(filter) {
+  byPopularity.addEventListener("click", () => {
+    document.querySelector("#portfolio").innerHTML = ""; // Vider le contenu du #portfolio
+    "a." + filter > "b." + filter; //  Récupérer la tri et le sort du tableau data.medias
 
-//const titles = "urlTitles";
-//numberOfLikes.sort();
-//console.log(numberOfLikes);
-/*
-let numbers = [5, 8, 3, 12, 9];
-numbers.sort((a, b) => a - b);
-console.log(numbers);
+    document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
+    console.log("a." + filter);
+    console.log("b." + filter);
+  });
+}
 
-byPopularity.addEventListener("click", () => {
-  console.log("test");
-});*/
+sort((a, b) => (a.likes > b.likes ? -1 : 1));
+sort((a, b) => (a.title > b.title ? 1 : -1));
+sort((a, b) => (a.date > b.date ? 1 : -1));
+function sort(filter) {
+  byPopularity.addEventListener("click", () => {
+    document.querySelector("#portfolio").innerHTML = "";
+    "a." + filter > "b." + filter;
+
+    document.querySelector("#portfolio").appendChild(getMedias(data.medias));
+    console.log("a.", "b." + filter);
+  });
+}
+sort((a, b) => (a.likes > b.likes ? -1 : 1));
+sort((a, b) => (a.title > b.title ? 1 : -1));
+sort((a, b) => (a.date > b.date ? 1 : -1));
+*/

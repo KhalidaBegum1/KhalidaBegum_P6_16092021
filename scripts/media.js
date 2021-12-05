@@ -13,8 +13,8 @@ const getVideo = (media, index) => {
        </video>
        </a>
   <div class="portfolio-text" data-id="${index}">
-  <a href="photograph.html?title=${media.title}"> <span class="titles">${media.title}</span></a>
-  <a href="photograph.html?likes=${media.likes}"> <span class="portfolio-likes">${media.likes} ❤</span> </a> 
+ <span class="titles">${media.title}</span>
+   <span class="portfolio-likes">${media.likes}</span><button class="btn-like"> ❤</button>
        </div>
      </div>
    </article>
@@ -31,8 +31,8 @@ const getImage = (media, index) => {
             data-id="${index}"
           /></a>
           <div class="portfolio-text" data-id="${index}">
-         <a href="photograph.html?title="${media.title}"> <span class="titles">${media.title}</span></a>
-         <a href="photograph.html?likes="${media.likes}"> <span class="portfolio-likes">${media.likes}</span> <span> ❤</span> </a>  
+        <span class="titles">${media.title}</span>
+          <span class="portfolio-likes">${media.likes}</span> <button class="btn-like"> ❤</button> 
           </div> 
         </div>
       </article>

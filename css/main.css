@@ -275,6 +275,7 @@ h1 {
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .portfolio-text a {
   text-decoration: none;
@@ -283,6 +284,12 @@ h1 {
 .portfolio-likes {
   margin-right: 0;
   cursor: pointer;
+}
+.btn-like {
+  border: none;
+  background-color: transparent;
+  margin: 5px;
+  font-size: 18px;
 }
 
 .title {
