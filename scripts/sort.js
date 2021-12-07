@@ -192,3 +192,34 @@ function addEvent() {
   byDate.addEventListener("click", sort);
   byDate.addEventListener("keydown", sort);
 }
+
+function sort(filter) {
+ 
+    document.querySelector("#portfolio").innerHTML = ""; // Vider le contenu du #portfolio
+    data.medias.sort(() => "a." + filter > "b." + filter);//  Récupérer la tri et le sort du tableau data.medias
+    document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
+ 
+    if (filter === "likes") {
+      byPopularity.addEventListener("click", () => {
+        sorted((a, b) => (a.likes > b.likes ? -1 : 1));
+      });
+      
+    }
+    if (filter === "title") {
+      sorted((a, b) => (a.title > b.title ? 1 : -1));
+    }
+    if (filter === "date") {
+      sorted((a, b) => (a.date > b.date ? 1 : -1));
+    }
+
+};
+
+
+
+
+
+document.querySelectorAll('.sort-content').forEach(menuSort => {
+  menuSort.addEventListener('click', () => {
+    //handle click
+  })
+})

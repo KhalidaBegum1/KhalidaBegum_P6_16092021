@@ -43,51 +43,45 @@ const data = await loadData().then((data) => {
 const byPopularity = document.querySelector(".sort-popularity");
 const byTitle = document.querySelector(".sort-title");
 const byDate = document.querySelector(".sort-date");
-/*
-byPopularity.addEventListener("click", () => {
-  document.querySelector("#portfolio").innerHTML = "";
-  data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
-  document.querySelector("#portfolio").appendChild(getMedias(data.medias));
-});
 
-byTitle.addEventListener("click", () => {
-  document.querySelector("#portfolio").innerHTML = "";
-  data.medias.sort((a, b) => (a.title > b.title ? 1 : -1));
-  document.querySelector("#portfolio").appendChild(getMedias(data.medias));
-});
-byDate.addEventListener("click", () => {
-  document.querySelector("#portfolio").innerHTML = "";
-  data.medias.sort((a, b) => (a.date > b.date ? 1 : -1));
-  document.querySelector("#portfolio").appendChild(getMedias(data.medias));
-});
+let count = 0;
+function sorted(filter, button) {
+  button.addEventListener("click", () => {
+    document.querySelector("#portfolio").innerHTML = ""; // Vider le contenu du #portfolio
 
-function addEvent() {
-  byPopularity.addEventListener("click", sort);
-  byPopularity.addEventListener("keydown", sort);
-  byTitle.addEventListener("click", sort);
-  byTitle.addEventListener("keydown", sort);
-  byDate.addEventListener("click", sort);
-  byDate.addEventListener("keydown", sort);
-}*/
+    if (filter === "likes") {
+      data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+    }
+    if (filter === "title") {
+      data.medias.sort((a, b) => (a.title > b.title ? 1 : -1));
+    }
+    if (filter === "date") {
+      data.medias.sort((a, b) => (a.date > b.date ? 1 : -1));
+    }
+    //  Récupérer la tri et le sort du tableau data.medias
 
-function sort(filter) {
-  document.querySelector("#portfolio").innerHTML = ""; // Vider le contenu du #portfolio
+    document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
 
-  data.medias.sort(() => "a." + filter > "b." + filter); //  Récupérer la tri et le sort du tableau data.medias
+    let sortedPics = document.querySelectorAll(".portfolio-pics");
+    sortedPics.forEach((img) =>
+      img.addEventListener("click", (e) => {
+        count = e.target.getAttribute("data-id");
 
-  document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
+        let containerMedia = document.querySelector(".lightbox-image");
+
+        containerMedia.innerHTML = sortedPics[count].innerHTML;
+
+        lightboxBackground.style.display = "block";
+      })
+    );
+  });
+
   console.log(filter);
 }
 
-byPopularity.addEventListener("click", () => {
-  sort((a, b) => (a.likes > b.likes ? -1 : 1));
-});
-byTitle.addEventListener("click", () => {
-  sort((a, b) => (a.title > b.title ? 1 : -1));
-});
-byDate.addEventListener("click", () => {
-  sort((a, b) => (a.date > b.date ? 1 : -1));
-});
+sorted("likes", byPopularity);
+sorted("title", byTitle);
+sorted("date", byDate);
 
 const getPhotographerBio = (photographer) => {
   return convertStringToHTML(`
@@ -128,8 +122,8 @@ document
   .appendChild(getTags(data.photographer));
 
 document.querySelector("#portfolio").appendChild(getMedias(data.medias));
+
 const lightboxPics = document.querySelectorAll(".portfolio-pics");
-let count = 0;
 //console.log(lightboxPics);
 lightboxPics.forEach((img) =>
   img.addEventListener("click", (e) => {
@@ -198,7 +192,7 @@ let counterValue = 0;
 
 plusCounter.addEventListener("click", function () {
   let counterAdd = (counterValue += 1);
-  // numberOfLikes.innerHTML = counterValue;
+  //numberOfLikes.innerHTML = counterAdd;
   console.log(counterAdd);
 });
 
@@ -209,30 +203,3 @@ plusCounter.addEventListener("click", function () {
 }*/
 //sort("likes");
 //const byPopularity = document.querySelector(".sort-popularity");
-/*function sort(filter) {
-  byPopularity.addEventListener("click", () => {
-    document.querySelector("#portfolio").innerHTML = ""; // Vider le contenu du #portfolio
-    "a." + filter > "b." + filter; //  Récupérer la tri et le sort du tableau data.medias
-
-    document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
-    console.log("a." + filter);
-    console.log("b." + filter);
-  });
-}
-
-sort((a, b) => (a.likes > b.likes ? -1 : 1));
-sort((a, b) => (a.title > b.title ? 1 : -1));
-sort((a, b) => (a.date > b.date ? 1 : -1));
-function sort(filter) {
-  byPopularity.addEventListener("click", () => {
-    document.querySelector("#portfolio").innerHTML = "";
-    "a." + filter > "b." + filter;
-
-    document.querySelector("#portfolio").appendChild(getMedias(data.medias));
-    console.log("a.", "b." + filter);
-  });
-}
-sort((a, b) => (a.likes > b.likes ? -1 : 1));
-sort((a, b) => (a.title > b.title ? 1 : -1));
-sort((a, b) => (a.date > b.date ? 1 : -1));
-*/
