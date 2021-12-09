@@ -215,11 +215,13 @@ function sort(filter) {
 };
 
 
+counterPlus.addEventListener("click",()=>{
+counter ++
+counterTotal.innerHTML = counterValue;
+});
 
 
 
-document.querySelectorAll('.sort-content').forEach(menuSort => {
-  menuSort.addEventListener('click', () => {
-    //handle click
-  })
-})
+
+
+

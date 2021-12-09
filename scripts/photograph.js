@@ -52,6 +52,9 @@ function sorted(filter, button) {
     if (filter === "likes") {
       data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
     }
+    if (filter === "likes") {
+      data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+    }
     if (filter === "title") {
       data.medias.sort((a, b) => (a.title > b.title ? 1 : -1));
     }
@@ -144,6 +147,7 @@ next.addEventListener("click", () => {
   if (count > lightboxPics.length - 1) {
     count = 0;
   }
+
   containerMedia.innerHTML = lightboxPics[count].innerHTML;
 });
 
@@ -186,20 +190,19 @@ function closeMenu() {
 }
 dropBtn.forEach((btn) => btn.addEventListener("click", sortMenu));
 
-//const numberOfLikes = document.querySelectorAll(".portfolio-likes");
-const plusCounter = document.querySelector(".btn-like");
-let counterValue = 0;
+let counterTotal = document.querySelector(".portfolio-likes");
+let counterPlus = document.querySelector(".btn-like");
+let counterValue = counterTotal.innerText;
 
-plusCounter.addEventListener("click", function () {
-  let counterAdd = (counterValue += 1);
-  //numberOfLikes.innerHTML = counterAdd;
-  console.log(counterAdd);
+counterPlus.addEventListener("click", () => {
+  counterValue++;
+  counterTotal.innerHTML = counterValue;
 });
 
-//numberOfLikes.innerHTML = counterValue;
-/*function sort(filter) {
-  console.log("a." + filter);
-  console.log("b." + filter);
-}*/
-//sort("likes");
-//const byPopularity = document.querySelector(".sort-popularity");
+/*
+counterPlus.addEventListener("click", function () {
+  let counterAdd =(counterValue +=1);
+ // media.numberOfLikes.innerHTML = counterAdd;
+  console.log(counterAdd );
+});
+*/

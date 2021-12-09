@@ -59,7 +59,7 @@ const displayProfile = (photographer) => {
 
 //upload json file
 
-const tag = new URLSearchParams(window.location.search).get("tag");
+let tag = new URLSearchParams(window.location.search).get("tag");
 loadData()
   .then((data) => {
     if (tag) {
