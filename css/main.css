@@ -281,7 +281,7 @@ h1 {
   text-decoration: none;
 }
 
-.portfolio-likes {
+#portfolio-likes {
   margin-right: 0;
   cursor: pointer;
 }

@@ -221,7 +221,31 @@ counterTotal.innerHTML = counterValue;
 });
 
 
+let counterTotal = document.querySelector(".portfolio-likes");
+let counterPlus = document.querySelector(".btn-like");
+let counterValue = counterTotal.innerText;
+
+counterPlus.addEventListener("click", () => {
+  counterValue++;
+  counterTotal.innerHTML = counterValue;
+});
+var like = document.querySelectorAll(".number");
+
+function printTotalLikes() {
+  document.getElementById("nb-likes").textContent = totalLikes;
+}
 
 
-
+function increment(e) {
+  let target = e.currentTarget.childNodes[0].nodeValue;
+  if (e.key != "Tab" && e.key != "Shift") {
+      let total = parseInt(target) + 1;
+      e.currentTarget.childNodes[0].nodeValue = total.toString();
+      e.currentTarget.removeEventListener("click", increment);
+      e.currentTarget.removeEventListener("keydown", increment);
+      totalLikes= totalLikes+1;
+      printTotalLikes();
+  }
+  
+}
 

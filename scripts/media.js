@@ -31,8 +31,8 @@ const getImage = (media, index) => {
             data-id="${index}"
           /></a>
           <div class="portfolio-text" data-id="${index}">
-        <span class="titles">${media.title}</span>
-          <span class="portfolio-likes">${media.likes}</span> <button class="btn-like"> ❤</button> 
+        <span class="titles" aria-label="title">${media.title}</span>
+      <div id="likes">  <span class="portfolio-likes">${media.likes}</span> <button class="btn-like"> ❤</button> </div>
           </div> 
         </div>
       </article>

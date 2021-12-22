@@ -75,6 +75,9 @@ loadData()
 /* TODO :  Ajouter dynamiquement les tags
   Pour cela : 
   0) Créer une nouvelle fonction createTags
+  function createTags(photographer){
+
+  }
   1) Faire un boucle sur tous les photographes
   2) Récupérer dedans tous les tags existants
   3) Les stocker dans un tableau

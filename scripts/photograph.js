@@ -65,7 +65,7 @@ function sorted(filter, button) {
 
     document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
 
-    let sortedPics = document.querySelectorAll(".portfolio-pics");
+    let sortedPics = document.querySelectorAll(".portfolio-pics a");
     sortedPics.forEach((img) =>
       img.addEventListener("click", (e) => {
         count = e.target.getAttribute("data-id");
@@ -126,7 +126,7 @@ document
 
 document.querySelector("#portfolio").appendChild(getMedias(data.medias));
 
-const lightboxPics = document.querySelectorAll(".portfolio-pics");
+const lightboxPics = document.querySelectorAll(".portfolio-pics a");
 //console.log(lightboxPics);
 lightboxPics.forEach((img) =>
   img.addEventListener("click", (e) => {
@@ -190,19 +190,49 @@ function closeMenu() {
 }
 dropBtn.forEach((btn) => btn.addEventListener("click", sortMenu));
 
-let counterTotal = document.querySelector(".portfolio-likes");
-let counterPlus = document.querySelector(".btn-like");
-let counterValue = counterTotal.innerText;
-
-counterPlus.addEventListener("click", () => {
-  counterValue++;
-  counterTotal.innerHTML = counterValue;
-});
+//increment counter
 
 /*
-counterPlus.addEventListener("click", function () {
-  let counterAdd =(counterValue +=1);
- // media.numberOfLikes.innerHTML = counterAdd;
-  console.log(counterAdd );
-});
+
+let counterPlus = document.querySelectorAll(".btn-like");
+let counterTotal = document.getElementById(".portfolio-likes");
+let counterValue = counterTotal;
+
+counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
+
+function sortCounter(e) {
+  console.log("test");
+   //counterTotal = e.target.getAttribute(".portfolio-likes");
+   let target = e.currentTarget.childNodes[0].nodeValue;
+   counterValue++;
+   counterTotal = counterValue.innerText;
+  
+}
+
+let counterTotal = document.getElementById(".portfolio-likes");
+let counterPlus = document.querySelectorAll(".btn-like");
+let counterValue = counterTotal.innerText;
+counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
+function sortCounter() {
+  counterValue++;
+  counterTotal.innerHTML = counterValue;
+};
 */
+
+let counterTotal = document.querySelector(".portfolio-likes");
+let counterPlus = document.querySelectorAll(".btn-like");
+let counterValue = counterTotal.innerText;
+counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
+
+function sortCounter(e) {
+  console.log("test");
+  let target = e.currentTarget.appendChild.nodeValue;
+  e.currentTarget.appendChild.nodeValue = counterTotal.innerText;
+
+  //let target = e.currentTarget.parentNodes;
+  //e.currentTarget.parentNodes = counterTotal.innerText;
+
+  console.log(target);
+  counterValue++;
+  counterTotal.innerHTML = counterValue;
+}

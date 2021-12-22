@@ -29,7 +29,7 @@
     <header>
       <div class="profile-header">
         <a href="index.html">
-          <img src="assets/logo.jpg" alt="logo-image" />
+          <img src="assets/logo.jpg" alt="Fisheye Home page" />
         </a>
       </div>
 
@@ -38,7 +38,7 @@
 
         <ul id="photographer_tags" class="profile-tags"></ul>
 
-        <button class="btn-contact">Contactez-moi</button>
+        <button class="btn-contact" alt="contact-me">Contactez-moi</button>
         <div class="background">
           <div class="content">
             <span class="contact">Contactez-moi</span>
@@ -81,7 +81,14 @@
           <button class="dropbtn">^</button>
           <div id="photographer_likes">
             <a href="#">
-              <button class="sort-popularity">Popularité</button>
+              <button
+                class="sort-popularity"
+                role="button"
+                aria-labelledby="sort"
+                aria-haspopup="listbox"
+              >
+                Popularité
+              </button>
             </a>
           </div>
           <a href="#"><button class="sort-date">Date</button></a>
