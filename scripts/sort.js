@@ -241,11 +241,12 @@ function increment(e) {
   if (e.key != "Tab" && e.key != "Shift") {
       let total = parseInt(target) + 1;
       e.currentTarget.childNodes[0].nodeValue = total.toString();
-      e.currentTarget.removeEventListener("click", increment);
-      e.currentTarget.removeEventListener("keydown", increment);
+     
       totalLikes= totalLikes+1;
       printTotalLikes();
   }
   
 }
 
+var x = document.getElementsByTagName("H1")[0].getAttribute("class"); 
+  document.getElementById("demo").innerHTML = x;

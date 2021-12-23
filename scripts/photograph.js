@@ -219,20 +219,15 @@ function sortCounter() {
 };
 */
 
-let counterTotal = document.querySelector(".portfolio-likes");
+//let counterTotal = document.querySelector(".portfolio-likes");
 let counterPlus = document.querySelectorAll(".btn-like");
-let counterValue = counterTotal.innerText;
+//let counterValue = counterTotal.innerText;
 counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
 
 function sortCounter(e) {
   console.log("test");
-  let target = e.currentTarget.appendChild.nodeValue;
-  e.currentTarget.appendChild.nodeValue = counterTotal.innerText;
-
-  //let target = e.currentTarget.parentNodes;
-  //e.currentTarget.parentNodes = counterTotal.innerText;
-
-  console.log(target);
-  counterValue++;
-  counterTotal.innerHTML = counterValue;
+  let numberOfLikes = e.currentTarget
+    .closest(".likes")
+    .querySelector(".portfolio-likes");
+  numberOfLikes.innerHTML = parseInt(numberOfLikes.innerHTML) + 1;
 }
