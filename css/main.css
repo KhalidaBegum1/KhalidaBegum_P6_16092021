@@ -34,7 +34,7 @@
   text-decoration: none;
   color: #901c1c;
 }
-.nav-menu a:hover {
+.nav-menu li:hover {
   color: #ffffff;
   background-color: #901c1c;
 }
@@ -43,10 +43,6 @@
   border: 2px solid #e6e4e4;
   border-radius: 25px;
   margin: 7px;
-}
-.nav-menu li:hover {
-  color: #ffffff;
-  background-color: #901c1c;
 }
 
 .gallery {
@@ -106,6 +102,7 @@ h1 {
   justify-content: center;
   align-items: center;
 }
+
 .tags a {
   color: #901c1c;
 }
@@ -118,6 +115,17 @@ h1 {
 }
 
 .tags li:hover {
+  background-color: #901c1c;
+  color: #ffffff;
+}
+.price {
+  background-color: aqua;
+}
+.tag-filter {
+  border: none;
+  background-color: transparent;
+}
+.tag-filter:hover {
   background-color: #901c1c;
   color: #ffffff;
 }

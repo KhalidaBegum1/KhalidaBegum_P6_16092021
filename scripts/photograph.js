@@ -77,6 +77,16 @@ function sorted(filter, button) {
         lightboxBackground.style.display = "block";
       })
     );
+    let counterPlus = document.querySelectorAll(".btn-like");
+
+    counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
+    function sortCounter(e) {
+      console.log("test");
+      let numberOfLikes = e.currentTarget
+        .closest(".likes")
+        .querySelector(".portfolio-likes");
+      numberOfLikes.innerHTML = parseInt(numberOfLikes.innerHTML) + 1;
+    }
   });
 
   console.log(filter);
@@ -191,33 +201,6 @@ function closeMenu() {
 dropBtn.forEach((btn) => btn.addEventListener("click", sortMenu));
 
 //increment counter
-
-/*
-
-let counterPlus = document.querySelectorAll(".btn-like");
-let counterTotal = document.getElementById(".portfolio-likes");
-let counterValue = counterTotal;
-
-counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
-
-function sortCounter(e) {
-  console.log("test");
-   //counterTotal = e.target.getAttribute(".portfolio-likes");
-   let target = e.currentTarget.childNodes[0].nodeValue;
-   counterValue++;
-   counterTotal = counterValue.innerText;
-  
-}
-
-let counterTotal = document.getElementById(".portfolio-likes");
-let counterPlus = document.querySelectorAll(".btn-like");
-let counterValue = counterTotal.innerText;
-counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
-function sortCounter() {
-  counterValue++;
-  counterTotal.innerHTML = counterValue;
-};
-*/
 
 //let counterTotal = document.querySelector(".portfolio-likes");
 let counterPlus = document.querySelectorAll(".btn-like");

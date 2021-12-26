@@ -41,7 +41,7 @@ const createProfile = (photographer) => {
         <ul class="tags">${photographer.tags
           .map(
             (tag) =>
-              `<span> <li><a href="index.html?tag=${tag}">#${tag}</a></li></span> `
+              `<span> <li><button class="tag-filter" data-tag="${tag}">#${tag}</button></li></span> `
           )
           .join("")}
        
@@ -53,25 +53,35 @@ const createProfile = (photographer) => {
 
 //display photographer profile
 
-const displayProfile = (photographer) => {
-  document.getElementById("main").appendChild(createProfile(photographer));
+const displayProfile = (data) => {
+  document.getElementById("main").innerHTML = "";
+  for (let photographer of data) {
+    document.getElementById("main").appendChild(createProfile(photographer));
+  }
+  document.querySelectorAll(".tag-filter").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      getPhotographer(e.currentTarget.dataset.tag).then((data) => {
+        displayProfile(data);
+      });
+    });
+  });
 };
 
 //upload json file
 
-let tag = new URLSearchParams(window.location.search).get("tag");
-loadData()
-  .then((data) => {
-    if (tag) {
-      return data.photographers.filter((photographer) =>
-        photographer.tags.includes(tag)
-      );
-    }
-    return data.photographers;
-  })
-  .then((photographers) => {
-    photographers.forEach(displayProfile);
-  });
+async function getPhotographer(tag = null) {
+  let data = await loadData();
+  if (tag) {
+    return data.photographers.filter((photographer) =>
+      photographer.tags.includes(tag)
+    );
+  }
+  return data.photographers;
+}
+getPhotographer().then((data) => {
+  displayProfile(data);
+});
+
 /* TODO :  Ajouter dynamiquement les tags
   Pour cela : 
   0) Créer une nouvelle fonction createTags
