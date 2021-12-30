@@ -1,53 +1,13 @@
 import { convertStringToHTML } from "./common.js";
+import { factory } from "./factory.js";
 
-const getVideo = (media, index) => {
-  return `  
-    <article class="portfolio-pics">
-     <div>
-     <a href="#">
-       <video controls data-id="${index}">
-         <source
-           src="Sample Photos/${media.photographerId}/${media.video}"
-           type="Video" alt="${media.title}"
-         />
-       </video>
-       </a>
-  <div class="portfolio-text" data-id="${index}">
- <span class="titles">${media.title}</span>
- <div class="likes">  <span class="portfolio-likes">${media.likes}</span><button class="btn-like"> ❤</button></div>
-       </div>
-     </div>
-   </article>
-  `;
-};
-
-const getImage = (media, index) => {
-  return `
-      <article class="portfolio-pics">
-        <div>
-          <a href="#"><img 
-            src="Sample Photos/${media.photographerId}/${media.image}"
-            alt="${media.title}"
-            data-id="${index}"
-          /></a>
-          <div class="portfolio-text" data-id="${index}">
-        <span class="titles" aria-label="title">${media.title}</span>
-      <div class="likes"> <span class="portfolio-likes">${media.likes} </span><button class="btn-like"> ❤</button> </div>
-          </div> 
-        </div>
-      </article>
-    `;
-};
-
-function getMedia(media, index) {
-  if (media.video) {
-    return getVideo(media, index);
-  }
-  return getImage(media, index);
-}
-
-export const getMedias = (medias) => {
+export const getMedias = (medias) => { //recover media and display
   return convertStringToHTML(
-    medias.map((media, index) => getMedia(media, index)).join("")
+    medias
+      .map((media, index) => {
+        let m = new factory(media, index);
+        return m.display();
+      })
+      .join("")
   );
 };

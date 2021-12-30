@@ -301,9 +301,6 @@ h1 {
 .title {
   cursor: pointer;
 }
-#total-likes {
-  display: none;
-}
 
 /* lightbox*/
 .lightbox {
@@ -605,22 +602,21 @@ input {
     object-fit: cover;
   }
 
-  #total-likes {
+  footer {
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 25%;
-    height: 3em;
+    height: 2em;
     color: #000000;
     background-color: #d3573c;
     margin-left: 75%;
-    position: absolute;
+    position: fixed;
     border-radius: 5px;
+    bottom: 0px;
+    right: 0px;
   }
   #total-likes p {
     color: #000000;
-   
   }
-
-  
 }

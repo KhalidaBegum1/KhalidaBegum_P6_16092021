@@ -203,9 +203,14 @@ dropBtn.forEach((btn) => btn.addEventListener("click", sortMenu));
 //increment counter
 
 let counterPlus = document.querySelectorAll(".btn-like");
-let totalLikes = document.getElementById("total-likes");
 
 counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
+
+let totalLikes = data.medias
+  .map((m) => m.likes)
+  .reduce((total, value) => total + value);
+document.getElementById("total-likes").innerHTML = totalLikes;
+document.getElementById("prix").innerHTML = data.photographer.price;
 
 function sortCounter(e) {
   console.log("test");
@@ -213,16 +218,13 @@ function sortCounter(e) {
     .closest(".likes")
     .querySelector(".portfolio-likes");
   numberOfLikes.innerHTML = parseInt(numberOfLikes.innerHTML) + 1;
-  // document.getElementById("total-likes").value = numberOfLikes + 1;
+
+  document.getElementById("total-likes").innerHTML = ++totalLikes;
 }
 
-/*const getLikes = (media, photographer) => {
-  return convertStringToHTML(
-    `<footer><div id="total-likes">${media.likes}  ❤ <p>${photographer.price}€/jour</p></div></footer>`
-  );
-};*/
 console.log(totalLikes);
 
+//validation formulaire
 document
   .querySelector('#contactForm input[type="submit"]')
   .addEventListener("click", (e) => {
@@ -235,7 +237,10 @@ document
       valid &= check(field);
     }
     if (valid) {
-      console.log("contact form is complet");
+      for (let field of fields) {
+        console.log(field.value);
+      }
+      closeModal();
     }
   });
 
