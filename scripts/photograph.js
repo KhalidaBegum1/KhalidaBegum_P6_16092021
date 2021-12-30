@@ -202,9 +202,9 @@ dropBtn.forEach((btn) => btn.addEventListener("click", sortMenu));
 
 //increment counter
 
-//let counterTotal = document.querySelector(".portfolio-likes");
 let counterPlus = document.querySelectorAll(".btn-like");
-//let counterValue = counterTotal.innerText;
+let totalLikes = document.getElementById("total-likes");
+
 counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
 
 function sortCounter(e) {
@@ -213,4 +213,41 @@ function sortCounter(e) {
     .closest(".likes")
     .querySelector(".portfolio-likes");
   numberOfLikes.innerHTML = parseInt(numberOfLikes.innerHTML) + 1;
+  // document.getElementById("total-likes").value = numberOfLikes + 1;
+}
+
+/*const getLikes = (media, photographer) => {
+  return convertStringToHTML(
+    `<footer><div id="total-likes">${media.likes}  ❤ <p>${photographer.price}€/jour</p></div></footer>`
+  );
+};*/
+console.log(totalLikes);
+
+document
+  .querySelector('#contactForm input[type="submit"]')
+  .addEventListener("click", (e) => {
+    e.preventDefault();
+    let fields = document.querySelectorAll(
+      "#contactForm input,#contactForm select,#contactForm textarea"
+    );
+    let valid = true;
+    for (let field of fields) {
+      valid &= check(field);
+    }
+    if (valid) {
+      console.log("contact form is complet");
+    }
+  });
+
+function check(input) {
+  input.setCustomValidity("");
+  if (input.validity.tooShort) {
+    input.setCustomValidity(
+      `this field must contain at least ${input.minLength} caracters`
+    );
+  }
+  if (input.validity.valueMissing) {
+    input.setCustomValidity("this field is mandatory");
+  }
+  return input.reportValidity();
 }

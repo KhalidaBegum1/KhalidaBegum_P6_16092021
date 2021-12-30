@@ -118,9 +118,7 @@ h1 {
   background-color: #901c1c;
   color: #ffffff;
 }
-.price {
-  background-color: aqua;
-}
+
 .tag-filter {
   border: none;
   background-color: transparent;
@@ -302,6 +300,9 @@ h1 {
 
 .title {
   cursor: pointer;
+}
+#total-likes {
+  display: none;
 }
 
 /* lightbox*/
@@ -603,4 +604,23 @@ input {
     height: 600px;
     object-fit: cover;
   }
+
+  #total-likes {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 25%;
+    height: 3em;
+    color: #000000;
+    background-color: #d3573c;
+    margin-left: 75%;
+    position: absolute;
+    border-radius: 5px;
+  }
+  #total-likes p {
+    color: #000000;
+   
+  }
+
+  
 }

@@ -39,12 +39,12 @@ const getImage = (media, index) => {
     `;
 };
 
-const getMedia = (media, index) => {
+function getMedia(media, index) {
   if (media.video) {
     return getVideo(media, index);
   }
   return getImage(media, index);
-};
+}
 
 export const getMedias = (medias) => {
   return convertStringToHTML(
