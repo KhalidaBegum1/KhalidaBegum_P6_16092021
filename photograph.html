@@ -42,7 +42,7 @@
         <div class="background">
           <div class="content">
             <span class="contact">Contactez-moi</span>
-            <span class="close"> </span>
+            <span class="close" alt="Close contact form"> </span>
             <div class="modal-body">
               <form
                 id="contactForm"
@@ -81,10 +81,18 @@
                   />
                 </div>
                 <div class="formdata">
-                  <label for="message">Votre Message</label>
-                  <textarea name="message" id="message"></textarea>
+                  <label for="message" alt="Your message">Votre Message</label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    required
+                    minlength="3"
+                    maxlength="3000"
+                  ></textarea>
                 </div>
-                <input class="button-send" type="submit" value="Envoyer" />
+                <button class="sendbtn" alt="send">
+                  <input class="button-send" type="submit" value="Envoyer" />
+                </button>
               </form>
             </div>
           </div>
@@ -115,13 +123,21 @@
 
       <div id="portfolio"></div>
       <div class="lightbox" id="lightbox">
-        <span class="lightbox-close"></span>
+        <span class="lightbox-close" alt="Close dialog"></span>
 
         <div class="nav-arrow">
-          <button id="nav-left" class="fas fa-arrow-left"></button>
-          <button id="nav-right" class="fas fa-arrow-right"></button>
+          <button
+            id="nav-left"
+            class="fas fa-arrow-left"
+            alt="Previous image"
+          ></button>
+          <button
+            id="nav-right"
+            class="fas fa-arrow-right"
+            alt="Next image"
+          ></button>
         </div>
-        <div class="lightbox-container">
+        <div class="lightbox-container" aria-label="image closeup view">
           <div class="lightbox-image"></div>
           <div class="lightbox-text">
             <span></span>

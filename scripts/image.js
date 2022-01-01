@@ -14,7 +14,7 @@ export class image {
           /></a>
           <div class="portfolio-text" data-id="${this.index}">
         <span class="titles" aria-label="title">${this.title}</span>
-      <div class="likes"> <span class="portfolio-likes">${this.likes} </span><button class="btn-like"> ❤</button> </div>
+      <div class="likes" aria-label="likes"> <span class="portfolio-likes">${this.likes} </span><button class="btn-like"> ❤</button> </div>
           </div> 
         </div>
       </article>
