@@ -98,7 +98,7 @@ sorted("date", byDate);
 
 const getPhotographerBio = (photographer) => {
   return convertStringToHTML(`
-  <div class="profile-text">
+  <div class="profile-text" aria-label="photographer bio">
     <h1>${photographer.name}</h1>
   
     <span>${photographer.city}, ${photographer.country}</span>

@@ -27,22 +27,36 @@
 
   <body>
     <header>
-      <div class="profile-header">
+      <div class="profile-header" aria-label="Header logo">
         <a href="index.html">
           <img src="assets/logo.jpg" alt="Fisheye Home page" />
         </a>
       </div>
 
       <section class="photographer-info">
-        <div id="photographer_bio" class="photographer-profile"></div>
+        <div
+          id="photographer_bio"
+          class="photographer-profile"
+          aria-label="photographer biography"
+        ></div>
 
-        <ul id="photographer_tags" class="profile-tags"></ul>
+        <ul
+          id="photographer_tags"
+          class="profile-tags"
+          aria-label="photographer profile tag filter"
+        ></ul>
 
-        <button class="btn-contact" alt="contact-me">Contactez-moi</button>
+        <button
+          class="btn-contact"
+          alt="contact-me"
+          aria-label="Open contact form"
+        >
+          Contactez-moi
+        </button>
         <div class="background">
           <div class="content">
             <span class="contact">Contactez-moi</span>
-            <span class="close" alt="Close contact form"> </span>
+            <span class="close" aria-label="Close contact form"> </span>
             <div class="modal-body">
               <form
                 id="contactForm"
@@ -51,40 +65,46 @@
                 method="get"
               >
                 <div class="formdata">
-                  <label for="first">Prénom</label>
+                  <label id="label-first" for="first">Prénom</label>
                   <input
                     type="text"
                     name="first"
                     id="first"
+                    aria-labelledby="label-first"
                     required
                     minlength="2"
                   />
                 </div>
                 <div class="formdata">
-                  <label for="last">Nom</label>
+                  <label id="label-last" for="last">Nom</label>
                   <input
                     type="text"
                     name="last"
                     id="last"
+                    aria-labelledby="label-last"
                     required
                     minlength="2"
                   />
                 </div>
                 <div class="formdata">
-                  <label for="email">Email</label>
+                  <label id="label-email" for="email">Email</label>
                   <input
                     type="email"
                     name="email"
                     id="email"
+                    aria-labelledby="label-email"
                     pattern="(.*)@(.*)"
                     required
                   />
                 </div>
                 <div class="formdata">
-                  <label for="message" alt="Your message">Votre Message</label>
+                  <label id="label-textarea" for="message" alt="Your message"
+                    >Votre Message</label
+                  >
                   <textarea
                     name="message"
                     id="message"
+                    aria-labelledby="label-textarea"
                     required
                     minlength="3"
                     maxlength="3000"
@@ -109,35 +129,53 @@
               <button
                 class="sort-popularity"
                 role="button"
-                aria-labelledby="sort"
+                aria-label="filter by popularity"
                 aria-haspopup="listbox"
               >
                 Popularité
               </button>
             </a>
           </div>
-          <a href="#"><button class="sort-date">Date</button></a>
-          <a href="#"><button class="sort-title">Titre</button></a>
+          <a href="#"
+            ><button
+              class="sort-date"
+              role="button"
+              aria-label="filter by date"
+              aria-haspopup="listbox"
+            >
+              Date
+            </button></a
+          >
+          <a href="#"
+            ><button
+              class="sort-title"
+              role="button"
+              aria-label="filter by title"
+              aria-haspopup="listbox"
+            >
+              Titre
+            </button></a
+          >
         </div>
       </div>
 
       <div id="portfolio"></div>
       <div class="lightbox" id="lightbox">
-        <span class="lightbox-close" alt="Close dialog"></span>
+        <span class="lightbox-close" aria-label="Close dialog"></span>
 
         <div class="nav-arrow">
           <button
             id="nav-left"
             class="fas fa-arrow-left"
-            alt="Previous image"
+            aria-label="Previous image"
           ></button>
           <button
             id="nav-right"
             class="fas fa-arrow-right"
-            alt="Next image"
+            aria-label="Next image"
           ></button>
         </div>
-        <div class="lightbox-container" aria-label="image closeup view">
+        <div class="lightbox-container" aria-label="Image closeup view">
           <div class="lightbox-image"></div>
           <div class="lightbox-text">
             <span></span>
@@ -145,8 +183,9 @@
         </div>
       </div>
       <footer>
-        <span id="total-likes"> total likes </span>❤
-        <span id="prix"></span>€/jour
+        <span id="total-likes" aria-label="Total image likes">
+          total likes </span
+        >❤ <span id="prix" aria-label="Photographer daily price"></span>€/jour
       </footer>
     </main>
 

@@ -377,6 +377,7 @@ h1 {
 
 .btn-contact {
   position: fixed;
+  z-index:1;
   background-color: #901c1c;
   color: #ffffff;
   margin: 10px;
@@ -439,7 +440,7 @@ input {
   height: 150px;
   width: 100%;
 }
-.sendbtn{
+.sendbtn {
   background-color: transparent;
   border: none;
 }
@@ -484,6 +485,46 @@ input {
 .close:after {
   transform: rotate(-45deg);
 }
+footer {
+  display: none;
+}
+@media screen and (min-width: 599px) {
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 33%);
+    overflow: scroll;
+    padding: 20px;
+  }
+  #portfolio {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    overflow: scroll;
+  }
+  .btn-contact {
+    z-index: 1;
+    position: absolute;
+    left: 40%;
+  }
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #000000;
+    background-color: #d3573c;
+    border-radius: 5px;
+    width: 25%;
+    height: 2em;
+    margin-left: 38%;
+    position: absolute;
+  }
+  #total-likes {
+    color: #000000;
+  }
+  #prix {
+    color: #000000;
+    margin-left: 30px;
+  }
+}
 
 @media screen and (min-width: 991px) {
   .photographer-info {
@@ -497,6 +538,7 @@ input {
   }
   .contenu {
     position: fixed;
+    z-index: 1;
     display: block;
     text-align: center;
     background-color: #d3573c;
@@ -508,9 +550,8 @@ input {
     cursor: pointer;
   }
   .contenu:hover {
-    scroll-behavior: auto;
-    transform: scale(1.2);
-    visibility: hidden;
+    transform: scale(1.1);
+    display: none;
   }
 
   .main-header {
@@ -623,7 +664,10 @@ input {
     bottom: 0px;
     right: 0px;
   }
-  #total-likes p {
+  #total-likes {
+    color: #000000;
+  }
+  #prix {
     color: #000000;
   }
 }
