@@ -249,6 +249,10 @@ h1 {
   margin-left: 30px;
   color: #000000;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 /* portfolio*/
@@ -324,6 +328,7 @@ h1 {
   z-index: 11;
   cursor: pointer;
   border: none;
+  background-color: transparent;
 }
 #nav-left {
   left: 40px;
@@ -341,6 +346,8 @@ h1 {
   opacity: 1;
   cursor: pointer;
   z-index: 12;
+  border: none;
+  background-color: transparent;
 }
 
 .lightbox-close:before,
@@ -445,7 +452,7 @@ input {
   border: none;
 }
 .button-send {
-  margin-top: 50px;
+  margin-top: 10px;
   background-color: #901c1c;
   color: #ffffff;
   font-size: 23px;
@@ -468,6 +475,8 @@ input {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+  border: none;
+  background-color: transparent;
 }
 
 .close:before,
@@ -547,10 +556,10 @@ footer {
     padding: 20px;
     background-color: #fafafa;
   }
-  .contenu {
+  #contenu {
     position: fixed;
     z-index: 1;
-    display: block;
+    display: none;
     text-align: center;
     background-color: #d3573c;
     width: 15%;
@@ -559,10 +568,7 @@ footer {
     padding: 3px;
     border-radius: 5px;
     cursor: pointer;
-  }
-  .contenu:hover {
-    transform: scale(1.1);
-    display: none;
+    text-decoration: none;
   }
 
   .main-header {

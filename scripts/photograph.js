@@ -199,6 +199,7 @@ function closeMenu() {
   dropMenu.style.display = "none";
 }
 dropBtn.forEach((btn) => btn.addEventListener("click", sortMenu));
+dropBtn.forEach((btn) => btn.addEventListener("keydown", sortMenu));
 
 //increment counter
 
@@ -227,6 +228,7 @@ console.log(totalLikes);
 //validation formulaire
 document
   .querySelector('#contactForm input[type="submit"]')
+  .addEventListener("keydown", closeModal)
   .addEventListener("click", (e) => {
     e.preventDefault();
     let fields = document.querySelectorAll(
