@@ -4,9 +4,9 @@ import { getMedias } from "./media.js";
 //DOM elements
 const modalBackground = document.querySelector(".background");
 const modalBtn = document.querySelectorAll(".btn-contact");
-const lightboxBackground = document.querySelector(".lightbox");
-const next = document.querySelector("#nav-right");
-const prev = document.querySelector("#nav-left");
+let lightboxBackground = document.querySelector(".lightbox");
+let next = document.querySelector("#nav-right");
+let prev = document.querySelector("#nav-left");
 let containerMedia = document.querySelector(".lightbox-image");
 const closeBox = lightboxBackground.querySelector(".lightbox-close");
 closeBox.addEventListener("click", closeLightbox);
@@ -45,6 +45,7 @@ const byTitle = document.querySelector(".sort-title");
 const byDate = document.querySelector(".sort-date");
 
 let count = 0;
+
 function sorted(filter, button) {
   button.addEventListener("click", () => {
     document.querySelector("#portfolio").innerHTML = ""; // Vider le contenu du #portfolio
@@ -66,6 +67,7 @@ function sorted(filter, button) {
     document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
 
     let sortedPics = document.querySelectorAll(".portfolio-pics a");
+
     sortedPics.forEach((img) =>
       img.addEventListener("click", (e) => {
         count = e.target.getAttribute("data-id");
@@ -136,8 +138,9 @@ document
 
 document.querySelector("#portfolio").appendChild(getMedias(data.medias));
 
-const lightboxPics = document.querySelectorAll(".portfolio-pics a");
+let lightboxPics = document.querySelectorAll(".portfolio-pics a");
 //console.log(lightboxPics);
+
 lightboxPics.forEach((img) =>
   img.addEventListener("click", (e) => {
     count = e.target.getAttribute("data-id");
@@ -149,6 +152,17 @@ lightboxPics.forEach((img) =>
     lightboxBackground.style.display = "block";
   })
 );
+lightboxPics.forEach((img) =>
+  img.addEventListener("keydown", (e) => {
+    containerMedia.innerHTML = lightboxPics[count].innerHTML;
+
+    lightboxBackground.style.display = "block";
+    attributeFocus(e);
+  })
+);
+function attributeFocus(e) {
+  document.getElementById("lightbox").focus(e);
+}
 
 next.addEventListener("click", () => {
   count = parseInt(count) + 1;
@@ -178,8 +192,7 @@ function closeLightbox() {
   lightboxBackground.style.display = "none";
 }
 
-function launchLightbox(e) {
-  console.log(e.target);
+function launchLightbox() {
   lightboxBackground.style.display = "block";
 }
 
@@ -200,6 +213,13 @@ function closeMenu() {
 }
 dropBtn.forEach((btn) => btn.addEventListener("click", sortMenu));
 dropBtn.forEach((btn) => btn.addEventListener("keydown", sortMenu));
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    dropMenu.style.display = "none";
+    lightboxBackground.style.display = "none";
+    modalBackground.style.display = "none";
+  }
+});
 
 //increment counter
 
@@ -228,7 +248,6 @@ console.log(totalLikes);
 //validation formulaire
 document
   .querySelector('#contactForm input[type="submit"]')
-  .addEventListener("keydown", closeModal)
   .addEventListener("click", (e) => {
     e.preventDefault();
     let fields = document.querySelectorAll(
