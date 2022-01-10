@@ -221,6 +221,11 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+document.querySelectorAll("button").addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+  }
+});
+
 //increment counter
 
 let counterPlus = document.querySelectorAll(".btn-like");

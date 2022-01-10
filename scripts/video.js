@@ -3,7 +3,7 @@ export class video {
     Object.assign(this, media);
     this.index = index;
   }
-  display() {
+  display() {//recover videos and display
     return `  
         <article class="portfolio-pics">
          <div>

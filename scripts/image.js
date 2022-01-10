@@ -3,7 +3,7 @@ export class image {
     Object.assign(this, media);
     this.index = index;
   }
-  display() {
+  display() {//recover images and display
     return `
       <article class="portfolio-pics">
         <div>

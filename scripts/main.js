@@ -1,4 +1,3 @@
-
 import { convertStringToHTML, loadData } from "./common.js";
 
 //create profile into new div and contain each profile in fragments (container)
