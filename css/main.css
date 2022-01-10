@@ -1,0 +1,693 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: DM Sans;
+  color: #901c1c;
+}
+
+.contenu {
+  display: none;
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 13px;
+}
+.desktop-title {
+  display: none;
+}
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  font-size: 14px;
+}
+.nav-menu a {
+  text-decoration: none;
+  color: #901c1c;
+}
+.nav-menu li:hover {
+  color: #ffffff;
+  background-color: #901c1c;
+}
+.nav-menu li {
+  padding: 5px;
+  border: 2px solid #e6e4e4;
+  border-radius: 25px;
+  margin: 7px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 60px;
+  width: 100%;
+}
+
+.vignette {
+  margin: 20px 20px 50px 20px;
+}
+.vignette a {
+  text-decoration: none;
+}
+.vignette a:hover {
+  color: #ffffff;
+}
+
+.vignette img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.vignette-link:hover {
+  transform: scale(1.1);
+  transition: ease-in-out;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 30px;
+  text-align: center;
+  color: #d3573c;
+}
+h1 {
+  font-size: 18px;
+  text-align: right;
+}
+.vignette-text {
+  text-align: center;
+  line-height: 2em;
+  margin: 10px;
+}
+.price {
+  color: #525252;
+}
+.vignette-text p {
+  color: #000000;
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.tags a {
+  color: #901c1c;
+}
+.tags li {
+  list-style: none;
+  padding: 5px;
+  border: 2px solid #e6e4e4;
+  border-radius: 25px;
+  margin: 7px;
+}
+
+.tags li:hover {
+  background-color: #901c1c;
+  color: #ffffff;
+}
+
+.tag-filter {
+  border: none;
+  background-color: transparent;
+}
+.tag-filter:hover {
+  background-color: #901c1c;
+  color: #ffffff;
+}
+
+/*photographer profile page*/
+.profile-header {
+  position: absolute;
+  margin: 10px;
+}
+.photographer-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin: 10px;
+}
+.photographer-profile h1 {
+  text-align: left;
+  color: #d3573c;
+  font-weight: 400;
+  font-size: 40px;
+  margin-top: 25px;
+}
+.profile-text {
+  color: #d3573c;
+  margin-top: 5em;
+}
+.profile-text p {
+  color: #525252;
+}
+.profile-pic img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 40px;
+}
+.profile-tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.profile-tags li {
+  list-style: none;
+  padding: 5px;
+  border: 2px solid #e6e4e4;
+  border-radius: 25px;
+}
+.profile-tags li:hover {
+  background-color: #901c1c;
+}
+.profile-tags a {
+  text-decoration: none;
+  color: #901c1c;
+}
+.profile-tags a:hover {
+  color: #ffffff;
+  background-color: #901c1c;
+}
+
+/* menu sort by */
+
+.sort-menu label {
+  font-size: 16px;
+  width: 80px;
+}
+
+.dropbtn {
+  position: absolute;
+  background-color: #901c1c;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 16px;
+  margin-left: 45px;
+  border: none;
+}
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #ddd;
+}
+/* hidden par default*/
+
+.sort-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.sort-content {
+  display: none;
+  position: absolute;
+  top: 0;
+  margin-left: 7em;
+  background-color: #901c1c;
+  min-width: 160px;
+  z-index: 1;
+}
+.sort-popularity,
+.sort-date,
+.sort-title {
+  width: 90%;
+  background-color: #901c1c;
+  padding: 10px 10px;
+  color: #ffffff;
+  display: block;
+  margin: 6px;
+  border: none;
+  border-bottom: solid 2px #ffffff;
+  cursor: pointer;
+}
+.dropbtn {
+  padding: 0;
+  left: 54%;
+  margin-top: 15px;
+  max-width: 3px;
+  max-height: 3px;
+}
+
+.sort-content a:hover {
+  background-color: #ddd;
+}
+.close-menu {
+  margin-left: 30px;
+  color: #000000;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* portfolio*/
+
+#portfolio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.portfolio-pics {
+  position: relative;
+  margin: 20px 20px 0px 20px;
+  width: 90%;
+}
+.portfolio-pics img{
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.portfolio-pics video {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.portfolio-text {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.portfolio-text a {
+  text-decoration: none;
+}
+
+#portfolio-likes {
+  margin-right: 0;
+  cursor: pointer;
+}
+.btn-like {
+  border: none;
+  background-color: transparent;
+  margin: 5px;
+  font-size: 18px;
+}
+
+.title {
+  cursor: pointer;
+}
+
+/* lightbox*/
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 1;
+  overflow: auto;
+}
+
+#nav-left,
+#nav-right {
+  font-size: 30px;
+  position: fixed;
+  top: 50%;
+  transition: 0.3s;
+  z-index: 11;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+#nav-left {
+  left: 40px;
+}
+#nav-right {
+  right: 40px;
+}
+
+.lightbox-close {
+  position: absolute;
+  right: 25px;
+  top: 40px;
+  width: 35px;
+  height: 35px;
+  opacity: 1;
+  cursor: pointer;
+  z-index: 12;
+  border: none;
+  background-color: transparent;
+}
+
+.lightbox-close:before,
+.lightbox-close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 40px;
+  width: 6px;
+  background-color: #901c1c;
+}
+.lightbox-close:before {
+  transform: rotate(45deg);
+}
+.lightbox-close:after {
+  transform: rotate(-45deg);
+}
+
+.lightbox-container img {
+  width: 100%;
+  object-fit: cover;
+}
+.lightbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 75px;
+  margin-right: 75px;
+  min-height: 100vh;
+  cursor: pointer;
+}
+
+/*modal*/
+
+.btn-contact {
+  position: fixed;
+  z-index: 1;
+  background-color: #901c1c;
+  color: #ffffff;
+  margin: 10px;
+  height: 40px;
+  width: 150px;
+  left: 28%;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+}
+.btn-contact:hover {
+  background-color: #d3573c;
+  color: #000000;
+}
+.background {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.content {
+  width: 100%;
+  height: 100vh;
+  animation-name: modalopen;
+  background: #d3573c;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+.contact {
+  margin: 10px;
+  color: #000000;
+  font-size: 40px;
+}
+
+.modal-body {
+  padding: 15px 8%;
+  margin: 15px auto;
+}
+.formdata {
+  margin-top: 15px;
+}
+label {
+  color: #000000;
+  font-size: 20px;
+}
+input {
+  padding: 8px;
+  height: 3em;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+}
+#message {
+  height: 150px;
+  width: 100%;
+}
+.sendbtn {
+  background-color: transparent;
+  border: none;
+}
+.button-send {
+  margin-top: 10px;
+  background-color: #901c1c;
+  color: #ffffff;
+  font-size: 23px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+}
+.text-control {
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 10px;
+}
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+  border: none;
+  background-color: transparent;
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+footer {
+  display: none;
+}
+@media screen and (min-width: 599px) {
+  #contenu {
+    display: none;
+  }
+  .photographer-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .vignette {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 33%);
+    overflow: scroll;
+    padding: 20px;
+  }
+  #portfolio {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    overflow: scroll;
+  }
+  .btn-contact {
+    z-index: 1;
+    position: absolute;
+    left: 40%;
+  }
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #000000;
+    background-color: #d3573c;
+    border-radius: 5px;
+    width: 25%;
+    height: 2em;
+    margin-left: 38%;
+    position: absolute;
+  }
+  #total-likes {
+    color: #000000;
+  }
+  #prix {
+    color: #000000;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width: 991px) {
+  .photographer-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 15px;
+    padding: 20px;
+    background-color: #fafafa;
+  }
+  #contenu {
+    position: fixed;
+    z-index: 1;
+    display: none;
+    text-align: center;
+    background-color: #d3573c;
+    width: 15%;
+    color: #000000;
+    margin: -8px 40%;
+    padding: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .main-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  .mobile-title {
+    display: none;
+  }
+  .desktop-title {
+    display: inline;
+  }
+
+  .nav-menu {
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    padding: 10px;
+  }
+  .gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .vignette {
+    width: 300px;
+    margin: 20px;
+    padding: 15px;
+  }
+  #portfolio {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .portfolio-pics {
+    width: 350px;
+    margin: 20px;
+    padding: 15px;
+  }
+  .portfolio-pics img {
+    height: 250px;
+  }
+  .portfolio-pics video {
+    height: 250px;
+  }
+
+  .photographer-profile {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .profile-header {
+    top: 0;
+    left: 0;
+    margin: 20px;
+  }
+  .profile-pic img {
+    height: 200px;
+    width: 200px;
+  }
+  .profile-text {
+    line-height: 2.5em;
+  }
+  .tags {
+    color: green;
+  }
+
+  .btn-contact {
+    position: absolute;
+    height: 60px;
+    width: 150px;
+    left: 45%;
+  }
+  .background {
+    background-color: rgba(194, 190, 190, 0.322);
+    overflow: overlay;
+  }
+  .content {
+    margin: 10% auto;
+    max-height: 92%;
+    max-width: 40%;
+    border-radius: 10px;
+  }
+  .lightbox-container img {
+    width: 50em;
+    height: 600px;
+    object-fit: cover;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 25%;
+    height: 2em;
+    color: #000000;
+    background-color: #d3573c;
+    margin-left: 75%;
+    position: fixed;
+    border-radius: 5px;
+    bottom: 0px;
+    right: 0px;
+  }
+  #total-likes {
+    color: #000000;
+  }
+  #prix {
+    color: #000000;
+  }
+}

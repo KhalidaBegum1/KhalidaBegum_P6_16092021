@@ -15,163 +15,73 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="mimi-keel.html" />
+    <link rel="stylesheet" href="./css/main.css" />
+
     <title>FishEye</title>
   </head>
   <body>
-    <a class="contenu" href="#">Passer au contenu</a>
+    <a id="contenu" href="#main">Passer au contenu</a>
     <header class="main-header">
-      <div class="header">
-        <img src="/UI-Design-FishEye-FR/.logo.png" alt="logo-image" />
+      <div class="header" aria-label="Header logo">
+        <a href="index.html">
+          <img src="assets/logo.jpg" alt="FishEye Homepage"
+        /></a>
         <h1 class="mobile-title">Nos Photographes</h1>
       </div>
       <nav>
-        <ul class="nav-menu">
-          <li><a href="#">#Portrait</a></li>
-          <li><a href="#">#Art</a></li>
-          <li><a href="#">#Fashion</a></li>
-          <li><a href="#">#Architechture</a></li>
-          <li><a href="#">#Travel</a></li>
-          <li><a href="#">#Sport</a></li>
-          <li><a href="#">#Animals</a></li>
-          <li><a href="#">#Events</a></li>
+        <ul class="nav-menu" id="nav-menu" aria-label="Navigation filter photographer by tag">
+          <span>
+            <li>
+              <button class="tag-filter" data-tag="portrait">#Portrait</button>
+            </li></span
+          >
+          <span
+            ><li>
+              <button class="tag-filter" data-tag="art">#Art</button>
+            </li></span
+          >
+          <span>
+            <li>
+              <button class="tag-filter" data-tag="fashion">#Fashion</button>
+            </li></span
+          >
+          <span>
+            <li>
+              <button class="tag-filter" data-tag="architecture">
+                #Architechture
+              </button>
+            </li></span
+          >
+          <span>
+            <li>
+              <button class="tag-filter" data-tag="travel">#Travel</button>
+            </li></span
+          >
+          <span
+            ><li>
+              <button class="tag-filter" data-tag="sports">#Sport</button>
+            </li></span
+          >
+          <span
+            ><li>
+              <button class="tag-filter" data-tag="animals">#Animals</button>
+            </li></span
+          >
+          <span
+            ><li>
+              <button class="tag-filter" data-tag="events">#Events</button>
+            </li></span
+          >
         </ul>
       </nav>
       <h1 class="desktop-title">Nos Photographes</h1>
     </header>
     <main>
       <section>
-        <div class="gallery">
-          <article>
-            <div class="vignette">
-              <a href="mimi-keel.html">
-                <img
-                  src="Sample Photos/Mimi/Portrait_Nora.jpg"
-                  alt="Mimi Keel Images"
-                />
-                <h2>Mimi Keel</h2>
-                <div class="vignette-text">
-                  <span>London, UK</span>
-                  <p>Voir le beau dans le quotidien</p>
-                  <span>400€/jour</span>
-                </div>
-              </a>
-              <ul class="tags">
-                <li><a href="#">#Portrait</a></li>
-                <li><a href="#">#Events</a></li>
-                <li><a href="#">#Travel</a></li>
-                <li><a href="#">#Animals</a></li>
-              </ul>
-            </div>
-          </article>
-          <article>
-            <div class="vignette">
-              <a href="#">
-                <img
-                  src="Sample Photos/Ellie Rose/Architecture_Horseshoe.jpg"
-                  alt="Ellie-Rose Wilkens Images"
-                />
-                <h2>Ellie-Rose Wilkens</h2>
-                <div class="vignette-text">
-                  <span>Paris, France</span>
-                  <p>Travaill sur des compositions complexes</p>
-                  <span>250€/jour</span>
-                </div>
-              </a>
-              <ul class="tags">
-                <li><a href="#">#Sports</a></li>
-                <li><a href="#">#Architecture</a></li>
-              </ul>
-            </div>
-          </article>
-          <article>
-            <div class="vignette">
-              <a href="#">
-                <img
-                  src="Sample Photos/Tracy/Fashion_Urban_Jungle.jpg"
-                  alt="Tracy Galindo Images"
-                />
-                <h2>Tracy Galindo</h2>
-                <div class="vignette-text">
-                  <span>Montreal, Canada</span>
-                  <p>Photographe freelance</p>
-                  <span>500€/jour</span>
-                </div>
-              </a>
-              <ul class="tags">
-                <li><a href="#">#Art</a></li>
-                <li><a href="#">#Fashion</a></li>
-                <li><a href="#">#Events</a></li>
-              </ul>
-            </div>
-          </article>
-          <article>
-            <div class="vignette">
-              <a href="#">
-                <img
-                  src="Sample Photos/Nabeel/Travel_Outdoor_Baths.jpg"
-                  alt="Nabeel Bradford Images"
-                />
-                <h2>Nabeel Bradford</h2>
-                <div class="vignette-text">
-                  <span>Mexico City, Mexico</span>
-                  <p>Je vais toujours de l'avant</p>
-                  <span>350€/jour</span>
-                </div>
-              </a>
-              <ul class="tags">
-                <li><a href="#">#Travel</a></li>
-                <li><a href="#">#Portraits</a></li>
-              </ul>
-            </div>
-          </article>
-          <article>
-            <div class="vignette">
-              <a href="#">
-                <img
-                  src="Sample Photos/Rhode/Fashion_Melody_Red_on_Stripes.jpg"
-                  alt="Rhode Dubois Images"
-                />
-                <h2>Rhode Dubois</h2>
-                <div class="vignette-text">
-                  <span>Barcelone, Spain</span>
-                  <p>Créatrice de souvenirs</p>
-                  <span>375€/jour</span>
-                </div>
-              </a>
-              <ul class="tags">
-                <li><a href="#">#Sport</a></li>
-                <li><a href="#">#Fashion</a></li>
-                <li><a href="#">#Events</a></li>
-                <li><a href="#">#Animals</a></li>
-              </ul>
-            </div>
-          </article>
-          <article>
-            <div class="vignette">
-              <a href="#">
-                <img
-                  src="Sample Photos/Marcel/Travel_Tower.jpg"
-                  alt="Marcel Nikolic Images"
-                />
-                <h2>Marcel Nikolic</h2>
-                <div class="vignette-text">
-                  <span>Berlin, Germany</span>
-                  <p>Toujours à la recherche de LA photo</p>
-                  <span>300€/jour</span>
-                </div>
-              </a>
-              <ul class="tags">
-                <li><a href="#">#Travel</a></li>
-                <li><a href="#">#Architecture</a></li>
-              </ul>
-            </div>
-          </article>
-        </div>
+        <div id="main" class="gallery"></div>
       </section>
     </main>
 
-    <script src="main.js"></script>
+    <script src="./scripts/main.js" type="module"></script>
   </body>
 </html>

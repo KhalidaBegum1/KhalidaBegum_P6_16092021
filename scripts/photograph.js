@@ -1,0 +1,295 @@
+import { loadData, convertStringToHTML } from "./common.js";
+import { getMedias } from "./media.js";
+
+//DOM elements
+const modalBackground = document.querySelector(".background");
+const modalBtn = document.querySelectorAll(".btn-contact");
+let lightboxBackground = document.querySelector(".lightbox");
+let next = document.querySelector("#nav-right");
+let prev = document.querySelector("#nav-left");
+let containerMedia = document.querySelector(".lightbox-image");
+const closeBox = lightboxBackground.querySelector(".lightbox-close");
+closeBox.addEventListener("click", closeLightbox);
+const urlPhotographerId = +new URLSearchParams(location.search).get(
+  "photographerId"
+);
+// Launch sort menu
+const dropBtn = document.querySelectorAll(".close-menu");
+
+const contentClose = document.querySelector(".dropbtn");
+contentClose.addEventListener("click", closeMenu);
+
+const closeBtn = modalBackground.querySelector(".close");
+closeBtn.addEventListener("click", closeModal);
+
+//photographer bio
+const data = await loadData().then((data) => {
+  const photographer = data.photographers.find((photographer) => {
+    return photographer.id === urlPhotographerId;
+  });
+  const media = data.media.filter((media) => {
+    return media.photographerId === urlPhotographerId;
+  });
+
+  return {
+    photographer: photographer,
+    medias: media,
+  };
+});
+
+// 2: ajout un event listener sur les boutons
+
+const byPopularity = document.querySelector(".sort-popularity");
+const byTitle = document.querySelector(".sort-title");
+const byDate = document.querySelector(".sort-date");
+
+let count = 0;
+
+function sorted(filter, button) {
+  button.addEventListener("click", () => {
+    document.querySelector("#portfolio").innerHTML = ""; // Vider le contenu du #portfolio
+
+    if (filter === "likes") {
+      data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+    }
+    if (filter === "likes") {
+      data.medias.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+    }
+    if (filter === "title") {
+      data.medias.sort((a, b) => (a.title > b.title ? 1 : -1));
+    }
+    if (filter === "date") {
+      data.medias.sort((a, b) => (a.date > b.date ? 1 : -1));
+    }
+    //  Récupérer la tri et le sort du tableau data.medias
+
+    document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
+
+    let sortedPics = document.querySelectorAll(".portfolio-pics a");
+
+    sortedPics.forEach((img) =>
+      img.addEventListener("click", (e) => {
+        count = e.target.getAttribute("data-id");
+
+        let containerMedia = document.querySelector(".lightbox-image");
+
+        containerMedia.innerHTML = sortedPics[count].innerHTML;
+
+        lightboxBackground.style.display = "block";
+      })
+    );
+    sortedPics.forEach((img) =>
+      img.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          count = e.currentTarget.firstChild.getAttribute("data-id");
+          count = parseInt(count) + 1;
+
+          containerMedia.innerHTML = sortedPics[count].innerHTML;
+
+          lightboxBackground.style.display = "block";
+          attributeFocus();
+        }
+      })
+    );
+    let counterPlus = document.querySelectorAll(".btn-like");
+
+    counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
+
+    function sortCounter(e) {
+      let numberOfLikes = e.currentTarget
+        .closest(".likes")
+        .querySelector(".portfolio-likes");
+      numberOfLikes.innerHTML = parseInt(numberOfLikes.innerHTML) + 1;
+      document.getElementById("total-likes").innerHTML = ++totalLikes;
+    }
+  });
+}
+
+sorted("likes", byPopularity);
+sorted("title", byTitle);
+sorted("date", byDate);
+
+const getPhotographerBio = (photographer) => {
+  return convertStringToHTML(`
+  <div class="profile-text" aria-label="photographer bio">
+    <h1>${photographer.name}</h1>
+  
+    <span>${photographer.city}, ${photographer.country}</span>
+    <p>${photographer.tagline}</p>
+  </div>
+  <span class="profile-pic">
+    <img
+      src="Sample Photos/Photographers ID Photos/${photographer.portrait}"
+      alt="Portrait de ${photographer.name}"
+    />
+  </span>
+  `);
+};
+
+const getTags = (photographer) => {
+  return convertStringToHTML(
+    photographer.tags
+      .map((tag) => {
+        return `<span> <li><a href="index.html?tag=${tag}">#${tag}</a></li></span> `;
+      })
+      .join("")
+  );
+};
+
+// Launch Modal
+
+document.title = data.photographer.name;
+document
+  .querySelector("#photographer_bio")
+  .appendChild(getPhotographerBio(data.photographer));
+
+document
+  .querySelector("#photographer_tags")
+  .appendChild(getTags(data.photographer));
+
+document.querySelector("#portfolio").appendChild(getMedias(data.medias));
+
+let lightboxPics = document.querySelectorAll(".portfolio-pics a");
+
+lightboxPics.forEach((img) =>
+  img.addEventListener("click", (e) => {
+    count = e.target.getAttribute("data-id");
+
+    let containerMedia = document.querySelector(".lightbox-image");
+
+    containerMedia.innerHTML = lightboxPics[count].innerHTML;
+
+    lightboxBackground.style.display = "block";
+  })
+);
+
+lightboxPics.forEach((img) =>
+  img.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      count = e.target.firstChild.getAttribute("data-id");
+      count = parseInt(count) + 1;
+
+      containerMedia.innerHTML = lightboxPics[count].innerHTML;
+
+      lightboxBackground.style.display = "block";
+      attributeFocus();
+    }
+  })
+);
+
+function attributeFocus() {
+  document.getElementById("lightbox").focus();
+  document.querySelector("#nav-right").focus();
+  document.querySelector("#nav-left").focus();
+}
+
+next.addEventListener("click", () => {
+  count = parseInt(count) + 1;
+
+  if (count > lightboxPics.length - 1) {
+    count = 0;
+  }
+
+  containerMedia.innerHTML = lightboxPics[count].innerHTML;
+});
+
+prev.addEventListener("click", () => {
+  count = parseInt(count) - 1;
+
+  if (count < 0) {
+    count = lightboxPics.length - 1;
+  }
+
+  containerMedia.innerHTML = lightboxPics[count].innerHTML;
+});
+
+// Functions
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+function closeLightbox() {
+  lightboxBackground.style.display = "none";
+}
+
+function launchLightbox() {
+  lightboxBackground.style.display = "block";
+}
+
+function launchModal() {
+  modalBackground.style.display = "block";
+}
+
+function closeModal() {
+  modalBackground.style.display = "none";
+}
+
+function sortMenu() {
+  dropMenu.style.display = "block";
+}
+
+function closeMenu() {
+  dropMenu.style.display = "none";
+}
+dropBtn.forEach((btn) => btn.addEventListener("click", sortMenu));
+dropBtn.forEach((btn) => btn.addEventListener("keydown", sortMenu));
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    dropMenu.style.display = "none";
+    lightboxBackground.style.display = "none";
+    modalBackground.style.display = "none";
+  }
+});
+
+//increment counter
+
+let counterPlus = document.querySelectorAll(".btn-like");
+
+counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
+
+let totalLikes = data.medias
+  .map((m) => m.likes)
+  .reduce((total, value) => total + value);
+document.getElementById("total-likes").innerHTML = totalLikes;
+document.getElementById("prix").innerHTML = data.photographer.price;
+
+function sortCounter(e) {
+  console.log("test");
+  let numberOfLikes = e.currentTarget
+    .closest(".likes")
+    .querySelector(".portfolio-likes");
+  numberOfLikes.innerHTML = parseInt(numberOfLikes.innerHTML) + 1;
+
+  document.getElementById("total-likes").innerHTML = ++totalLikes;
+}
+
+//validation formulaire
+document
+  .querySelector('#contactForm input[type="submit"]')
+  .addEventListener("click", (e) => {
+    e.preventDefault();
+    let fields = document.querySelectorAll(
+      "#contactForm input,#contactForm select,#contactForm textarea"
+    );
+    let valid = true;
+    for (let field of fields) {
+      valid &= check(field);
+    }
+    if (valid) {
+      for (let field of fields) {
+        console.log(field.value);
+      }
+      closeModal();
+    }
+  });
+
+function check(input) {
+  input.setCustomValidity("");
+  if (input.validity.tooShort) {
+    input.setCustomValidity(
+      `this field must contain at least ${input.minLength} caracters`
+    );
+  }
+  if (input.validity.valueMissing) {
+    input.setCustomValidity("this field is mandatory");
+  }
+  return input.reportValidity();
+}
