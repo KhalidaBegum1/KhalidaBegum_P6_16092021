@@ -36,7 +36,6 @@ const data = await loadData().then((data) => {
     medias: media,
   };
 });
-//console.log(data.medias);
 
 // 2: ajout un event listener sur les boutons
 
@@ -79,19 +78,31 @@ function sorted(filter, button) {
         lightboxBackground.style.display = "block";
       })
     );
+    sortedPics.forEach((img) =>
+      img.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          count = e.currentTarget.firstChild.getAttribute("data-id");
+          count = parseInt(count) + 1;
+
+          containerMedia.innerHTML = sortedPics[count].innerHTML;
+
+          lightboxBackground.style.display = "block";
+          attributeFocus();
+        }
+      })
+    );
     let counterPlus = document.querySelectorAll(".btn-like");
 
     counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
+
     function sortCounter(e) {
-      console.log("test");
       let numberOfLikes = e.currentTarget
         .closest(".likes")
         .querySelector(".portfolio-likes");
       numberOfLikes.innerHTML = parseInt(numberOfLikes.innerHTML) + 1;
+      document.getElementById("total-likes").innerHTML = ++totalLikes;
     }
   });
-
-  console.log(filter);
 }
 
 sorted("likes", byPopularity);
@@ -139,7 +150,6 @@ document
 document.querySelector("#portfolio").appendChild(getMedias(data.medias));
 
 let lightboxPics = document.querySelectorAll(".portfolio-pics a");
-//console.log(lightboxPics);
 
 lightboxPics.forEach((img) =>
   img.addEventListener("click", (e) => {
@@ -152,22 +162,30 @@ lightboxPics.forEach((img) =>
     lightboxBackground.style.display = "block";
   })
 );
+
 lightboxPics.forEach((img) =>
   img.addEventListener("keydown", (e) => {
-    containerMedia.innerHTML = lightboxPics[count].innerHTML;
+    if (e.key === "Enter") {
+      count = e.target.firstChild.getAttribute("data-id");
+      count = parseInt(count) + 1;
 
-    lightboxBackground.style.display = "block";
-    attributeFocus(e);
+      containerMedia.innerHTML = lightboxPics[count].innerHTML;
+
+      lightboxBackground.style.display = "block";
+      attributeFocus();
+    }
   })
 );
-function attributeFocus(e) {
-  document.getElementById("lightbox").focus(e);
+
+function attributeFocus() {
+  document.getElementById("lightbox").focus();
+  document.querySelector("#nav-right").focus();
+  document.querySelector("#nav-left").focus();
 }
 
 next.addEventListener("click", () => {
   count = parseInt(count) + 1;
 
-  console.log(count);
   if (count > lightboxPics.length - 1) {
     count = 0;
   }
@@ -177,7 +195,7 @@ next.addEventListener("click", () => {
 
 prev.addEventListener("click", () => {
   count = parseInt(count) - 1;
-  console.log(count);
+
   if (count < 0) {
     count = lightboxPics.length - 1;
   }
@@ -221,11 +239,6 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-document.querySelectorAll("button").addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-  }
-});
-
 //increment counter
 
 let counterPlus = document.querySelectorAll(".btn-like");
@@ -247,8 +260,6 @@ function sortCounter(e) {
 
   document.getElementById("total-likes").innerHTML = ++totalLikes;
 }
-
-console.log(totalLikes);
 
 //validation formulaire
 document
