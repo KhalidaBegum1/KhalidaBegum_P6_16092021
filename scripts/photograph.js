@@ -76,12 +76,12 @@ function sorted(filter, button) {
         lightboxBackground.style.display = "block";
       })
     );
+
     //launch lightbox once images sorted using keydown
     sortedPics.forEach((img) =>
       img.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           count = e.target.firstChild.getAttribute("data-id");
-          //count = parseInt(count) + 1;
 
           containerMedia.innerHTML = sortedPics[count].innerHTML;
 
@@ -90,6 +90,7 @@ function sorted(filter, button) {
         }
       })
     );
+
     let counterPlus = document.querySelectorAll(".btn-like");
     //add likes and display total on sorted images
     counterPlus.forEach((btn) => btn.addEventListener("click", sortCounter));
