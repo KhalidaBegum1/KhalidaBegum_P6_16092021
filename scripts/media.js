@@ -1,7 +1,7 @@
 import { convertStringToHTML } from "./common.js";
 import { factory } from "./factory.js";
 
-export const getMedias = (medias) => { //recover media and display
+export const getMedias = (medias) => { //recover general media and display
   return convertStringToHTML(
     medias
       .map((media, index) => {
@@ -11,3 +11,4 @@ export const getMedias = (medias) => { //recover media and display
       .join("")
   );
 };
+//create inner divs

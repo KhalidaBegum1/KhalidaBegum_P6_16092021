@@ -1,6 +1,7 @@
 import { convertStringToHTML, loadData } from "./common.js";
 
 //create profile into new div and contain each profile in fragments (container)
+//vignette photograph
 const createProfile = (photographer) => {
   return convertStringToHTML(`
      <article>
@@ -50,6 +51,11 @@ const displayProfile = (data) => {
 };
 
 //upload json file
+//data from fishEye Json
+//to async return a Promise
+//await to wait for a Promise 
+// await used inside an async function
+//get tags and filter
 
 async function getPhotographer(tag = null) {
   let data = await loadData();
@@ -63,6 +69,8 @@ async function getPhotographer(tag = null) {
 getPhotographer().then((data) => {
   displayProfile(data);
 });
+
+//visiblity on scroll
 
 window.addEventListener("scroll", () => {
   let contenu = document.getElementById("contenu");
