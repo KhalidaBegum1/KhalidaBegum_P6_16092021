@@ -1,8 +1,8 @@
 export class image {
   constructor(media, index) {
-    Object.assign(this, media);
+    Object.assign(this, media);//value becomes the new object 
     this.index = index;
-  }
+  }//this substitute for the new object
   display() {//recover images and display
     return `
       <article class="portfolio-pics">

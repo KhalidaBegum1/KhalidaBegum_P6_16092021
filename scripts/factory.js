@@ -9,3 +9,5 @@ export class factory {
     return new image(media, index);
   }
 }
+// creating objects of same type using constructor
+
