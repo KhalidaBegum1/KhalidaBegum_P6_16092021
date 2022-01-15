@@ -64,6 +64,7 @@ function sorted(filter, button) {
     document.querySelector("#portfolio").appendChild(getMedias(data.medias)); //Relancer ("#portfolio")
 
     let sortedPics = document.querySelectorAll(".portfolio-pics a"); //recover tableau d'images
+
     //launch lightbox once images sorted
     sortedPics.forEach((img) =>
       img.addEventListener("click", (e) => {
@@ -104,6 +105,7 @@ function sorted(filter, button) {
     }
   });
 }
+
 //callback to sort filters
 sorted("likes", byPopularity);
 sorted("title", byTitle);
@@ -150,6 +152,7 @@ document
   .appendChild(getTags(data.photographer));
 
 document.querySelector("#portfolio").appendChild(getMedias(data.medias));
+
 //recover lightbox images
 let lightboxPics = document.querySelectorAll(".portfolio-pics a"); //recover tableau d'images
 
@@ -185,11 +188,13 @@ function attributeFocus(e) {
   document.querySelector("#nav-right").focus(e);
   document.querySelector("#nav-left").focus(e);
 }
+
 //event listeners to navigate images left and right
 next.addEventListener("click", () => {
   count = parseInt(count) + 1;
 
   if (count > lightboxPics.length - 1) {
+    //loop through images
     count = 0;
   }
 
@@ -200,7 +205,7 @@ prev.addEventListener("click", () => {
   count = parseInt(count) - 1;
 
   if (count < 0) {
-    count = lightboxPics.length - 1;
+    count = lightboxPics.length - 1; //loop through images from last image
   }
 
   containerMedia.innerHTML = lightboxPics[count].innerHTML;
@@ -235,6 +240,7 @@ dropBtn.forEach((btn) => btn.addEventListener("keydown", sortMenu));
 // Function to display elements using keydown escape
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
+    //condition if escape button used
     dropMenu.style.display = "none";
     lightboxBackground.style.display = "none";
     modalBackground.style.display = "none";
